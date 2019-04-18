@@ -7,6 +7,7 @@ class AddFishForm extends React.Component {
   descRef = React.createRef();
   imageRef = React.createRef();
   createFish = e => {
+    console.log(this.nameRef.value.attributes.id.value);
     e.preventDefault();
     const fish = {
       name: this.nameRef.value.value,
@@ -24,7 +25,13 @@ class AddFishForm extends React.Component {
   render() {
     return (
       <form className="fish-edit" action="" onSubmit={this.createFish}>
-        <input name="name" ref={this.nameRef} type="text" placeholder="Name" />
+        <input
+          name="name"
+          id="this_is_test"
+          ref={this.nameRef}
+          type="text"
+          placeholder="Name"
+        />
         <input
           name="price"
           ref={this.priceRef}
