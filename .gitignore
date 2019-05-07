@@ -1,8 +1,8 @@
 node_modules/
+stepped-solutions/
 *.zip
 .DS_Store
 .idea
 notes.md
 catch-of-the-day/yarn-error.log
-React-For-Beginners/compressed/*
 
