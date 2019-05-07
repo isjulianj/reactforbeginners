@@ -1,4 +1,6 @@
-![](http://wes.io/dgAQ/content)
+Following the React for Beginners tutorial by Wes Bos
+
+***
 
 # React For Beginners — [ReactForBeginners.com](https://ReactForBeginners.com)
 
