@@ -1,10 +1,10 @@
-import React from 'react';
-import Header from './Header.js';
-import Inventory from './Inventory.js';
-import Order from './Order.js';
-import sampleFishes from '../sample-fishes';
-import Fish from './Fish';
-import base from '../base';
+import React from "react";
+import Header from "./Header.js";
+import Inventory from "./Inventory.js";
+import Order from "./Order.js";
+import sampleFishes from "../sample-fishes";
+import Fish from "./Fish";
+import base from "../base";
 class App extends React.Component {
   state = {
     fishes: {},
@@ -25,7 +25,7 @@ class App extends React.Component {
     console.log(params);
     this.ref = base.syncState(`${params.storeId}/fishes`, {
       context: this,
-      state: 'fishes'
+      state: "fishes"
     });
   }
 
@@ -64,6 +64,39 @@ class App extends React.Component {
     this.setState({ order });
   };
 
+  updateFish = (key, updatedFish) => {
+    // take a copy of state
+    const fishes = { ...this.state.fishes };
+
+    // update changed fish
+    fishes[key] = updatedFish;
+
+    // set new state
+    this.setState({ fishes });
+  };
+
+  deleteFish = key => {
+    // Copy State
+    const fishes = { ...this.state.fishes };
+
+    // update the state
+    fishes[key] = null;
+
+    // set the state
+    this.setState({ fishes });
+  };
+  deleteOderItem = key => {
+    // Copy State
+    const order = { ...this.state.order };
+
+    // update the state
+
+    order[key] = null;
+
+    // set the state
+    this.setState({ order });
+  };
+
   render() {
     return (
       <div className="catch-of-the-day">
@@ -80,11 +113,17 @@ class App extends React.Component {
             ))}
           </ul>
         </div>
-        <Order fishes={this.state.fishes} order={this.state.order} />
+        <Order
+          fishes={this.state.fishes}
+          order={this.state.order}
+          removeOrderItem={this.deleteOderItem}
+        />
         <Inventory
           addFish={this.addFish}
           loadSampleFishes={this.LoadSampleFishes}
           fishes={this.state.fishes}
+          updateFish={this.updateFish}
+          removeFish={this.deleteFish}
         />
       </div>
     );
