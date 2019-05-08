@@ -1,8 +1,12 @@
-import React, { Fragment } from "react";
-import { getFunName } from "../helpers.js";
-import { format } from "util";
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { getFunName } from '../helpers.js';
+import { format } from 'util';
 
 class StorePicker extends React.Component {
+  static propTypes = {
+    history: PropTypes.object
+  };
   myInput = React.createRef();
   goToStore = e => {
     // stop the form from submitting
