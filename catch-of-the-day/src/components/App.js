@@ -1,11 +1,15 @@
-import React from "react";
-import Header from "./Header.js";
-import Inventory from "./Inventory.js";
-import Order from "./Order.js";
-import sampleFishes from "../sample-fishes";
-import Fish from "./Fish";
-import base from "../base";
+import React from 'react';
+import Header from './Header.js';
+import Inventory from './Inventory.js';
+import Order from './Order.js';
+import sampleFishes from '../sample-fishes';
+import Fish from './Fish';
+import PropTypes from 'prop-types';
+import base from '../base';
 class App extends React.Component {
+  static propTypes = {
+    match: PropTypes.object
+  };
   state = {
     fishes: {},
     order: {}
@@ -25,7 +29,7 @@ class App extends React.Component {
     console.log(params);
     this.ref = base.syncState(`${params.storeId}/fishes`, {
       context: this,
-      state: "fishes"
+      state: 'fishes'
     });
   }
 

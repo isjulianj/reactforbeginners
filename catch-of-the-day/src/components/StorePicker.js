@@ -1,6 +1,6 @@
-import React, { Fragment } from "react";
-import { getFunName } from "../helpers.js";
-import { format } from "util";
+import React, { Fragment } from 'react';
+import { getFunName } from '../helpers.js';
+import { format } from 'util';
 
 class StorePicker extends React.Component {
   myInput = React.createRef();
