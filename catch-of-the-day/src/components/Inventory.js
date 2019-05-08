@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import firebase from 'firebase';
-import base, { firebaseApp } from '../base';
-import AddFishForm from './AddFishForm.js';
-import EditFishForm from './EditFishForm.js';
-import Login from './Login.js';
+import React from "react";
+import PropTypes from "prop-types";
+import firebase from "firebase";
+import base, { firebaseApp } from "../base";
+import AddFishForm from "./AddFishForm.js";
+import EditFishForm from "./EditFishForm.js";
+import Login from "./Login.js";
 
 class Inventory extends React.Component {
   static propTypes = {
@@ -46,18 +46,31 @@ class Inventory extends React.Component {
       .then(this.authHandler);
   };
 
+  logout = async () => {
+    await firebase.auth().signOut();
+    this.setState({ uid: null });
+  };
+
   render() {
+    const logout = <button onClick={this.logout}>Log out</button>;
     // Check if they are logged in
     if (!this.state.uid) {
       return <Login authenticate={this.authenticate} />;
     }
     // check if owner of the store.
     if (this.state.uid !== this.state.owner) {
-      return <div>Sorry you are not the owner!</div>;
+      return (
+        <div>
+          <p>Sorry you are not the owner!</p>
+          {logout}
+        </div>
+      );
     }
     return (
       <div className="inventory">
         <h2>Inventory!!</h2>
+
+        {logout}
         {Object.keys(this.props.fishes).map(key => (
           <EditFishForm
             updateFish={this.props.updateFish}
