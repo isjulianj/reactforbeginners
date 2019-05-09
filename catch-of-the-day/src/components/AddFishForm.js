@@ -12,7 +12,6 @@ class AddFishForm extends React.Component {
   descRef = React.createRef();
   imageRef = React.createRef();
   createFish = e => {
-    console.log(this.nameRef.value.attributes.id.value);
     e.preventDefault();
     const fish = {
       name: this.nameRef.value.value,
@@ -23,7 +22,6 @@ class AddFishForm extends React.Component {
     };
 
     this.props.addFish(fish);
-    //refresh the form
     e.currentTarget.reset();
   };
 
